@@ -11,6 +11,27 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'perfil',
+    children:[
+      {
+        path: ":controlnumber",
+        loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+      }
+    ]
+  },
+  {
+    path: 'new-student',
+    loadChildren: () => import('./new-student/new-student.module').then( m => m.NewStudentPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'update-student',
+    loadChildren: () => import('./update-student/update-student.module').then( m => m.UpdateStudentPageModule)
+  },
 ];
 
 @NgModule({
