@@ -72,6 +72,10 @@ export class NewStudentPage implements OnInit {
             Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)
           ])
         ],
+        career: [
+          '',
+          Validators.required
+        ],
         photo: [
           '',
           Validators.compose([
@@ -175,6 +179,12 @@ export class NewStudentPage implements OnInit {
           message: 'El email esta mal formado'
         }
       ],
+      career: [
+        {
+          type: 'required',
+          message: "Carrera obligatoria"
+        },
+      ],
       photo: [
         {
           type: 'required',
@@ -188,8 +198,19 @@ export class NewStudentPage implements OnInit {
     }
   }
 
-  public newStudent():void{
-    this.studentService.newStudent(this.student)
+  public addStudent():void{
+    let newStudent: Student = {
+      controlnumber: this.myForm.get('controlnumber').value,
+      name: this.myForm.get('name').value,
+      curp: this.myForm.get('curp').value,
+      age: this.myForm.get('age').value,
+      nip: this.myForm.get('nip').value,
+      email: this.myForm.get('email').value,
+      career: this.myForm.get('career').value,
+      photo: this.myForm.get('photo').value,
+    }
+    this.studentService.addStudent(newStudent);
+    this.myForm.reset();
   }
 
 }

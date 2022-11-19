@@ -81,7 +81,7 @@ export class StudentService {
     this.students.splice(i,1);
   }
 
-  public newStudent(student:Student):void{
+  public addStudent(student:Student):void{
     this.students.push(student);
   }
 
